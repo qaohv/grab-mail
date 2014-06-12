@@ -5,6 +5,22 @@ html
     = stylesheet_link_tag "application.css"
   body
    .container
+     .header
+       ul.nav.nav-pills.pull-right
+         - if current_user
+         li.active
+           a href="/" title="Главная" Главная
+         li
+           a href="/auth/register" title="Регистрация" Регистрация
+         li
+           a href="/auth/login" title="Войти" Войти
+         - else
+         li
+           a href= "#" title="Панель управления" Панель управления
+         li
+           a href= "/auth/logout" title="Выйти" Выйти
+         - end
+       h3.text-muted EmailGrabber
      == yield
      .footer
        p Sibirskay 31 company
