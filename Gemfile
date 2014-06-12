@@ -33,3 +33,7 @@ gem "devise"
 
 # slim markup
 gem "slim"
+
+#formtastic
+gem "formtastic"
+

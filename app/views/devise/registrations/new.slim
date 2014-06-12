@@ -1,0 +1,8 @@
+h2 Регистрация
+= semantic_form_for(resource, url: registration_path(resource_name)) do |form|
+  = devise_error_messages!
+  .register-fields
+    = form.input :email, as: :email
+    = form.input :password, as: :password
+    = form.input :password_confirmation, as: :password
+    = form.action :submit, label: "Регистрация"

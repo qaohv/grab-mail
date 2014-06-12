@@ -1,0 +1,32 @@
+.register-fields li {
+  list-style-type: none;
+}
+
+.register-fields li .label {
+  line-height: 50px;
+  color: black;
+  font-size: 17px;
+  max-width: none !important;
+  width: 250px;
+  display: inline-block !important;
+  text-align: left;
+}
+
+.register-fields li input {
+  height: 35px;
+  width: 250px;
+}
+
+.register-fields .input_action input {
+  margin: 10px 0px 20px 250px;
+  width: 125px !important;
+  color: white;
+  background-color: #428BCA;
+  border:none;
+  border-radius: 3px;
+}
+
+abbr {
+  color: red;
+  padding-left: 4px;
+}
