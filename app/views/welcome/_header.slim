@@ -1,0 +1,12 @@
+- unless current_user
+  li.active
+    a href="/" title="Главная" Главная
+  li
+    a href="/auth/register" title="Регистрация" Регистрация
+  li
+    a href="/auth/login" title="Войти" Войти
+- else
+  li
+    a href= "/dashboard" title="Панель управления" Панель управления
+  li
+    = link_to "Выйти", destroy_user_session_path, method: :delete

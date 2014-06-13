@@ -7,21 +7,10 @@ html
   body
    .container
      .header
-       ul.nav.nav-pills.pull-right
-         - unless current_user
-           li.active
-             a href="/" title="Главная" Главная
-           li
-             a href="/auth/register" title="Регистрация" Регистрация
-           li
-             a href="/auth/login" title="Войти" Войти
-         - else
-           li
-             a href= "/dashboard" title="Панель управления" Панель управления
-           li
-             = link_to "Выйти", destroy_user_session_path, method: :delete
+       ul.nav.nav-pills.pull-right#dynamic_header
        h3.text-muted EmailGrabber
      == yield
      .footer
        p one-man-team product 2014.
      = javascript_include_tag "application.js"
+     script type='text/javascript' src='/dynamic_header.js'

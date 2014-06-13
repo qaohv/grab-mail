@@ -2,7 +2,6 @@
 class Dashboard::MailBoxesController < Dashboard::ApplicationController
   inherit_resources
   defaults route_prefix: "dashboard"
-  belongs_to :user
   respond_to :html
 
   protected
