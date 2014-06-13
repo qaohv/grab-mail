@@ -30,3 +30,7 @@ abbr {
   color: red;
   padding-left: 4px;
 }
+
+.button-wrapper {
+  margin-bottom: 30px;
+}

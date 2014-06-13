@@ -17,7 +17,7 @@ html
              a href="/auth/login" title="Войти" Войти
          - else
            li
-             a href= "#" title="Панель управления" Панель управления
+             a href= "/dashboard" title="Панель управления" Панель управления
            li
              = link_to "Выйти", destroy_user_session_path, method: :delete
        h3.text-muted EmailGrabber

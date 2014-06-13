@@ -1,0 +1,15 @@
+
+p.button-wrapper
+  a.btn.btn-primary.btn-lg href="#{new_dashboard_mail_box_path}" Добавить ящик
+table.table.table-hover
+  tr
+    th Логин
+    th POP3 сервер
+    th Последнее обновление
+    th Управление
+  tbody
+    - current_user.mail_boxes.each do |box|
+      tr
+        td = box.login
+        td = box.pop3_server
+        td = box.updated_at

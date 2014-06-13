@@ -37,3 +37,5 @@ gem "slim"
 #formtastic
 gem "formtastic"
 
+#standart CRUD
+gem "inherited_resources"
