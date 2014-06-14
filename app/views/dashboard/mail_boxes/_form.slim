@@ -1,0 +1,6 @@
+= semantic_form_for [:dashboard, resource] do |form|
+  .mailbox-fields
+    = form.input :login, as: :string
+    = form.input :pop3_server, as: :string
+    = form.input :domain, as: :string
+    = form.action :submit, label: "Создать ящик"

@@ -1,8 +1,10 @@
-.register-fields li {
+.register-fields li ,
+.mailbox-fields li {
   list-style-type: none;
 }
 
-.register-fields li .label {
+.register-fields li .label,
+.mailbox-fields li .label {
   line-height: 50px;
   color: black;
   font-size: 17px;
@@ -12,12 +14,14 @@
   text-align: left;
 }
 
-.register-fields li input {
+.register-fields li input,
+.mailbox-fields li input {
   height: 35px;
   width: 250px;
 }
 
-.register-fields .input_action input {
+.register-fields .input_action input,
+.mailbox-fields .input_action input {
   margin: 10px 0px 20px 250px;
   width: 125px !important;
   color: white;
@@ -33,4 +37,8 @@ abbr {
 
 .button-wrapper {
   margin-bottom: 30px;
+}
+
+.table thead {
+  background-color: #eee;
 }

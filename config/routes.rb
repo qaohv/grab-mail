@@ -5,6 +5,6 @@ Pop3EmailGrabber::Application.routes.draw do
 
   namespace :dashboard do
     get '/' => "mail_boxes#index"
-    resources :mail_boxes
+    resources :mail_boxes, except: [:show]
   end
 end

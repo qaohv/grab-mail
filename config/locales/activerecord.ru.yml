@@ -7,4 +7,8 @@ ru:
         email: Email
         password: Пароль
         password_confirmation: Повторите пароль
+      mail_box:
+        login: Логин
+        pop3_server: Адрес pop3 сервера
+        domain: Домен
 
