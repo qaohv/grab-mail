@@ -42,3 +42,16 @@ abbr {
 .table thead {
   background-color: #eee;
 }
+
+.update-button, .edit-button, .delete-button {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.center {
+  text-align: center;
+}
+
+.update-link, .edit-link, .delete-link {
+  margin: 0px 5px;
+}

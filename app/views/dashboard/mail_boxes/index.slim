@@ -6,9 +6,16 @@ table.table.table-hover
       th Логин
       th POP3 сервер
       th Последнее обновление
-      th Управление
+      th.center Управление
   - current_user.mail_boxes.each do |box|
     tr
       td = box.login
       td = box.pop3_server
       td = box.updated_at
+      td.center
+        a.update-link href="#" title="Обновить"
+          span.update-button.glyphicon.glyphicon-refresh
+        a.edit-link href="#{edit_dashboard_mail_box_path(box)}" title="Редактировать"
+          span.edit-button.glyphicon.glyphicon-edit
+        = link_to content_tag("span class=\"delete-button glyphicon glyphicon-remove\""), dashboard_mail_box_path(box), title: "Удалить", method: :delete, confirm: "Вы уверены?"
+
