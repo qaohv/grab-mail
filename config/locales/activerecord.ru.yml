@@ -11,4 +11,11 @@ ru:
         login: Логин
         pop3_server: Адрес pop3 сервера
         domain: Домен
-
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: не может быть пустым
+            password:
+              blank: не может быть пустым

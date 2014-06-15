@@ -50,6 +50,9 @@ GEM
     execjs (2.2.0)
     factory_girl (4.4.0)
       activesupport (>= 3.0.0)
+    factory_girl_rails (4.4.1)
+      factory_girl (~> 4.4.0)
+      railties (>= 3.0.0)
     formtastic (2.2.1)
       actionpack (>= 3.0)
     has_scope (0.6.0.rc)
@@ -152,7 +155,7 @@ DEPENDENCIES
   bootstrap-sass (~> 3.1.1)
   coffee-rails (~> 4.0.0)
   devise
-  factory_girl
+  factory_girl_rails
   formtastic
   inherited_resources
   jbuilder (~> 1.2)

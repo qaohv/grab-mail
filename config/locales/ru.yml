@@ -1,0 +1,4 @@
+ru:
+  errors:
+    messages:
+      not_saved: Ошибка при регистрации

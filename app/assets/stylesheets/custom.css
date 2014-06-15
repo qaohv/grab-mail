@@ -55,3 +55,14 @@ abbr {
 .update-link, .edit-link, .delete-link {
   margin: 0px 5px;
 }
+
+.inline-errors {
+  margin-left: 250px;
+  margin-top: -10px;
+  color: red;
+}
+
+#error_explanation {
+  border: 1px solid red;
+  padding: 10px 0px 10px 20px;
+}
