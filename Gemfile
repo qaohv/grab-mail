@@ -39,3 +39,8 @@ gem "formtastic"
 
 #standart CRUD
 gem "inherited_resources"
+
+group :test do
+  gem "rspec-rails"
+  gem "factory_girl"
+end
