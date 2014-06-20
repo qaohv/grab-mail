@@ -14,14 +14,28 @@ describe Dashboard::MailBoxesController do
       expect(response.status).to eq(200)
     end
 
-    it "render index template" do
+    it "render template" do
       get :index
       expect(response).to render_template('index')
     end
 
-    it "check instance variables in index action" do
+    it "check instance variables" do
       get :index
       expect(assigns(:mail_boxes)).to match_array(@user.mail_boxes)
+    end
+  end
+
+
+  describe "create action" do
+    it "redirect to index page after successfully mail_box creating" do
+      expect {
+        post :create, mail_box: { login: "dns.ryabokon", domain: "google.com", pop3_server: "pop3.google.com" }
+      }.to change(MailBox,:count).by(1)
+    end
+
+    it "render new page when fail in create action" do
+      post :create, {}
+      expect(response).to render_template('new')
     end
   end
 end
