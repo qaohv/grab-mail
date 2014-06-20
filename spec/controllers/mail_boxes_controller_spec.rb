@@ -38,4 +38,13 @@ describe Dashboard::MailBoxesController do
       expect(response).to render_template('new')
     end
   end
+
+  describe "destroy action" do
+    it "delete action" do
+      mail_box = @user.mail_boxes.create!(login: "dns.ryabokon", pop3_server: "pop3.google.com", domain: "google.com")
+      expect {
+        delete :destroy, id: mail_box.id
+      }.to change(MailBox,:count).by(-1)
+    end
+  end
 end
