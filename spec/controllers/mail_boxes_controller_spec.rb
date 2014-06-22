@@ -5,15 +5,25 @@ describe Dashboard::MailBoxesController do
     @request.env["devise.mapping"] = Devise.mappings[:user]
     @user = FactoryGirl.create :user
     sign_in @user
+    @mail_box = @user.mail_boxes.create!(login: "dns.ryabokon", pop3_server: "pop3.google.com", domain: "google.com")
   end
 
-  describe "index action" do
-    it "get response with status code 200" do
-      get :index
-      expect(response).to be_success
-      expect(response.status).to eq(200)
+  class << self
+    def get_response_status_code_200(*actions)
+      actions.each do |action|
+        it "get response with status code 200 for action #{action}" do
+          args = action == :edit ? { id: @mail_box.id } : {}
+          process action, 'GET', args
+          expect(response).to be_success
+          expect(response.status).to eq(200)
+        end
+      end
     end
+  end
 
+  get_response_status_code_200(:index, :new, :edit)
+
+  describe "index action" do
     it "render template" do
       get :index
       expect(response).to render_template('index')
@@ -48,22 +58,8 @@ describe Dashboard::MailBoxesController do
     end
   end
 
-  describe "new action" do
-    it "get response with status code 200" do
-      get :new
-      expect(response).to be_success
-      expect(response.status).to eq(200)
-    end
-  end
 
   describe "edit action" do
-    it "get response with status code 200" do
-      mail_box = @user.mail_boxes.create!(login: "dns.ryabokon", pop3_server: "pop3.google.com", domain: "google.com")
-      get :edit, id: mail_box.id
-      expect(response).to be_success
-      expect(response.status).to eq(200)
-    end
-
     it "check instance variables" do
       mail_box = @user.mail_boxes.create!(login: "dns.ryabokon", pop3_server: "pop3.google.com", domain: "google.com")
       get :edit, id: mail_box.id
