@@ -47,4 +47,30 @@ describe Dashboard::MailBoxesController do
       }.to change(MailBox,:count).by(-1)
     end
   end
+
+  describe "new action" do
+    it "get response with status code 200" do
+      get :new
+      expect(response).to be_success
+      expect(response.status).to eq(200)
+    end
+  end
+
+  describe "edit action" do
+    it "get response with status code 200" do
+      mail_box = @user.mail_boxes.create!(login: "dns.ryabokon", pop3_server: "pop3.google.com", domain: "google.com")
+      get :edit, id: mail_box.id
+      expect(response).to be_success
+      expect(response.status).to eq(200)
+    end
+
+    it "check instance variables" do
+      mail_box = @user.mail_boxes.create!(login: "dns.ryabokon", pop3_server: "pop3.google.com", domain: "google.com")
+      get :edit, id: mail_box.id
+      expect(assigns(:mail_box)).to match(mail_box)
+    end
+
+    it "render 404 page if object doen't exist" do
+    end
+  end
 end
