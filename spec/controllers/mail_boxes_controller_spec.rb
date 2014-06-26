@@ -23,8 +23,9 @@ describe Dashboard::MailBoxesController do
     def render_correct_template(*actions)
       actions.each do |action|
         it "render template action #{action}" do
-        verb = action == :index ? "GET" : "POST"
+          verb = action == :index ? "GET" : "POST"
           process action, verb, {}
+          expect(response).to render_template( verb == "GET" ? 'index' : 'new')
         end
       end
     end
