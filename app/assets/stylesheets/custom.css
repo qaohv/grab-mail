@@ -66,3 +66,14 @@ abbr {
   border: 1px solid red;
   padding: 10px 0px 10px 20px;
 }
+
+#popup-update {
+  background-color: #FFFFFF;
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: 0 0 25px 5px #999999;
+  color: #111111;
+  display: none;
+  min-width: 450px;
+  padding: 25px;
+  left: 40% !important;
+}

@@ -1,20 +1,31 @@
+javascript:
+ function PasswordPopup(box_id) {
+    $('#popup-update').show();
+    $('form#password-form').attr("action", "/dashboard/mail_boxes/"+box_id);
+    $('#popup-update').bPopup();
+  }
+
 - provide :title, "Панель управления - Все ящики пользователя"
 p.button-wrapper
   a.btn.btn-primary.btn-lg href="#{new_dashboard_mail_box_path}" Добавить ящик
+#popup-update
+  = render 'auth_form', object: @mail_box = MailBox.first
 table.table.table-hover
   thead
     tr
       th Логин
+      th Домен
       th POP3 сервер
       th Последнее обновление
       th.center Управление
   - current_user.mail_boxes.each do |box|
     tr
       td = box.login
+      td = box.domain
       td = box.pop3_server
       td = box.updated_at
       td.center
-        a.update-link href="#" title="Обновить"
+        a.update-link onclick="PasswordPopup(#{box.id});" href="#" title="Обновить"
           span.update-button.glyphicon.glyphicon-refresh
         a.edit-link href="#{edit_dashboard_mail_box_path(box)}" title="Редактировать"
           span.edit-button.glyphicon.glyphicon-edit

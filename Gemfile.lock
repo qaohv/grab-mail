@@ -160,6 +160,7 @@ DEPENDENCIES
   inherited_resources
   jbuilder (~> 1.2)
   jquery-rails
+  mail
   rails (= 4.0.0)
   rspec-rails
   sass-rails (~> 4.0.0)

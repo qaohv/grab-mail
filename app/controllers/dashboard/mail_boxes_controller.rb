@@ -5,6 +5,10 @@ class Dashboard::MailBoxesController < Dashboard::ApplicationController
   actions :all, except: :show
   respond_to :html
 
+  def update
+    p "this is update method"
+  end
+
   protected
     def begin_of_association_chain
       current_user

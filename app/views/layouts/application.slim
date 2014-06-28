@@ -3,6 +3,9 @@ html
   head
     title = "Email Grabber | #{yield :title}"
     = stylesheet_link_tag "application.css"
+    = yield :stylesheets
+    = javascript_include_tag "application.js"
+    = yield :javascripts
     = csrf_meta_tags
   body
    .container
@@ -12,5 +15,4 @@ html
      == yield
      .footer
        p one-man-team product 2014.
-     = javascript_include_tag "application.js"
      script type='text/javascript' src='/dynamic_header.js'
