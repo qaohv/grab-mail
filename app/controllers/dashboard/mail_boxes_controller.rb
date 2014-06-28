@@ -7,6 +7,7 @@ class Dashboard::MailBoxesController < Dashboard::ApplicationController
 
   def update
     p "this is update method"
+    p params
   end
 
   protected
