@@ -48,4 +48,8 @@ group :test do
   gem "factory_girl_rails"
 end
 
+#mail
 gem 'mail'
+
+#zip
+gem 'rubyzip'
