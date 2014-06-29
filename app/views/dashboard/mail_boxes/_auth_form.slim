@@ -1,6 +1,6 @@
 .auth
-  = form_tag "#", id: "password-form", method: "PUT" do
+  = form_tag "#", id: "password-form", method: "POST" do
     = label_tag :password
     = password_field_tag :password
-    = submit_tag "Обновить"
+    = submit_tag "Обновить", class: "btn btn-primary"
 

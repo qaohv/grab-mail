@@ -12,6 +12,10 @@ html
      .header
        ul.nav.nav-pills.pull-right#dynamic_header
        h3.text-muted EmailGrabber
+     - if flash[:notice]
+       .flash-notice = flash[:notice]
+     - elsif flash[:alert]
+       .flash-error = flash[:alert]
      == yield
      .footer
        p one-man-team product 2014.

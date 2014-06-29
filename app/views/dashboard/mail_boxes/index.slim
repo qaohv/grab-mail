@@ -1,7 +1,7 @@
 javascript:
  function PasswordPopup(box_id) {
     $('#popup-update').show();
-    $('form#password-form').attr("action", "/dashboard/mail_boxes/"+box_id);
+    $('form#password-form').attr("action", "/dashboard/mail_boxes/"+box_id+"/upload");
     $('#popup-update').bPopup();
   }
 
