@@ -6,6 +6,9 @@ gem 'rails', '4.0.0'
 #sqlite3
 gem 'sqlite3'
 
+#postgres
+gem 'pg'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 gem "bootstrap-sass", "~> 3.1.1"

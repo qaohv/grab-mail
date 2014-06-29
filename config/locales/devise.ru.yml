@@ -1,3 +1,5 @@
 ru:
  devise:
-
+   registrations:
+     user:
+       signed_up: "Вы успешно зарегистрировались"
