@@ -10,7 +10,6 @@ class MailBox < ActiveRecord::Base
   has_many :emails
 
   def get_emails(password)
-    p "work get emails"
     pop = Net::POP3.new self.pop3_server
     pop.start "#{self.login}@#{self.domain}", password
     unless pop.mails.empty?
@@ -22,14 +21,15 @@ class MailBox < ActiveRecord::Base
           args[:body] = text.decoded.force_encoding("utf-8")
           current_email =  self.emails.create!(args) rescue nil
           if current_email
-            dir = FileUtils.mkdir("#{Rails.root}/public/attachments/email_#{current_email.id}_attachments/")
+            dir = FileUtils.mkdir("#{Rails.root}/public/attachments/email_#{current_email.id}_attachments/") if email.attachments.size > 0
             email.attachments.each do |attachment|
               filename = attachment.filename
-              #p "#{dir.first}#{filename}"
-              file = File.open("#{dir.first}#{filename}","w+"){|file| file.write attachment.body.decoded.force_encoding("utf-8") }
+              path_to_file = "#{dir.first}#{filename}"
+              File.open(path_to_file,"w+"){|file| file.write attachment.body.decoded.force_encoding("utf-8") }
               Zip::File.open("#{dir.first}attachment.zip", Zip::File::CREATE) do |zip_file|
-                zip_file.add(filename, file)
+                zip_file.add(filename, path_to_file)
               end
+              FileUtils.rm(path_to_file)
             end
           end
         end
