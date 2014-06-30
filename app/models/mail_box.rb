@@ -29,7 +29,9 @@ class MailBox < ActiveRecord::Base
               Zip::File.open("#{dir.first}attachment.zip", Zip::File::CREATE) do |zip_file|
                 zip_file.add(filename, path_to_file)
               end
+              current_email.update_attributes(attach: File.open("#{dir.first}attachment.zip"))
               FileUtils.rm(path_to_file)
+              FileUtils.rm("#{dir.first}attachment.zip")
             end
           end
         end

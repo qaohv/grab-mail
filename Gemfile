@@ -53,3 +53,6 @@ gem 'mail'
 
 #zip
 gem 'rubyzip'
+
+#paperclip
+gem 'paperclip'

@@ -6,4 +6,8 @@ class Email < ActiveRecord::Base
   validate :from, presence: true
 
   belongs_to :mail_box
+
+  has_attached_file :attach,
+                    :url => "/system/:id.:extension"
+  validates_attachment_content_type :attach, content_type: "application/zip"
 end
