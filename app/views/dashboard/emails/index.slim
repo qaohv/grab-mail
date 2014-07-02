@@ -1,0 +1,19 @@
+- provide :title, "Панель управления - Все письма из ящика #{@mail_box.login}@#{@mail_box.domain}"
+p.button-wrapper
+  a.btn.btn-primary.btn-lg href="#{new_dashboard_mail_box_path}" Добавить ящик
+table.table.table-hover
+  thead
+    th Отправитель
+    th Получатель
+    th Тема
+    th.center Вложение
+    th Просмотр
+  - collection.each do |email|
+    tr
+      td = email.from
+      td = email.to
+      td = email.subject
+      td.center
+        = raw email.attach.present? ? "<a href=\"#{email.attach.url}\" title=\"Скачать\"><span class=\"glyphicon glyphicon-download\"></span></a>" : "Нет"
+      td
+        = link_to "Просмотр",  dashboard_mail_box_email_path(@mail_box, email)

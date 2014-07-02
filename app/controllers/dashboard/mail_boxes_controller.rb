@@ -6,10 +6,10 @@ class Dashboard::MailBoxesController < Dashboard::ApplicationController
   respond_to :html
 
   def upload
-    mail_box = MailBox.find(params[:id])
+    mail_box = MailBox.where(id: params[:id]).first
     key, message = :notice, "Скачивание началось, это может занять некоторое время"
     begin
-      mail_box.get_emails(params[:password])
+      mail_box.get_emails(params[:password]) if mail_box
     rescue => ex
       Rails.logger.info "Caught exception: #{ex.message}"
       key = :alert

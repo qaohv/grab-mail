@@ -1,0 +1,23 @@
+- provide :title, "Панель управления - Письмо из ящика #{@mail_box.login}@#{@mail_box.domain}"
+p.button-wrapper
+  a.btn.btn-primary.btn-lg href="#{new_dashboard_mail_box_path}" Добавить ящик
+.email-wrapper
+  .from-wrapper
+    span.from Отправитель:
+    = resource.from
+  .to-wrapper
+    span.to Получатель:
+    = resource.to
+  .subject-wrapper
+    span.subject Тема письма:
+    = resource.subject
+  .text-wrapper
+    span.letter-body Текст письма: <br/>
+    .letter-text
+      = raw resource.body
+
+
+
+
+
+

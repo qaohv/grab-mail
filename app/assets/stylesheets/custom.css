@@ -103,3 +103,35 @@ abbr {
 #password-form input {
   margin-right: 10px;
 }
+
+.email-wrapper {
+  font-size: 17px;
+}
+
+.email-wrapper .from-wrapper,
+.email-wrapper .to-wrapper,
+.email-wrapper .subject-wrapper {
+  margin-bottom: 10px;
+}
+
+.email-wrapper .from,
+.email-wrapper .to,
+.email-wrapper .subject {
+  margin-right: 20px;
+}
+
+.text-wrapper {
+  margin-bottom: 20px;
+}
+
+.letter-body {
+  padding: 10px 0px;
+}
+
+.letter-text {
+  background-color: #EEEEEE;
+  border: 1px solid #CCCCCC;
+  border-radius: 5px 5px 5px 5px;
+  margin-top: 10px;
+  padding: 25px;
+}
