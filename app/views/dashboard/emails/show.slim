@@ -1,6 +1,5 @@
 - provide :title, "Панель управления - Письмо из ящика #{@mail_box.login}@#{@mail_box.domain}"
-p.button-wrapper
-  a.btn.btn-primary.btn-lg href="#{new_dashboard_mail_box_path}" Добавить ящик
+= breadcrumbs ["<a href=\"/dashboard\">Панель управления</a>","<a href=\"/dashboard/mail_boxes/#{@mail_box.id}/emails\">Все письма из ящика #{@mail_box.login}@#{@mail_box.domain}</a>", "Просмотр письма"]
 .email-wrapper
   .from-wrapper
     span.from Отправитель:

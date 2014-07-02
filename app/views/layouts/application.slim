@@ -16,6 +16,9 @@ html
        .flash-notice = flash[:notice]
      - elsif flash[:alert]
        .flash-error = flash[:alert]
+     p.button-wrapper
+       a.btn.btn-primary.btn-lg href="#{new_dashboard_mail_box_path}" Добавить ящик
+     = yield :breadcrumbs
      == yield
      .footer
        p one-man-team product 2014.

@@ -6,8 +6,7 @@ javascript:
   }
 
 - provide :title, "Панель управления - Все ящики пользователя"
-p.button-wrapper
-  a.btn.btn-primary.btn-lg href="#{new_dashboard_mail_box_path}" Добавить ящик
+= breadcrumbs ["<a href=\"/dashboard\">Панель управления</a>", "Все ящики пользователя"]
 #popup-update
   = render 'auth_form'
 table.table.table-hover
