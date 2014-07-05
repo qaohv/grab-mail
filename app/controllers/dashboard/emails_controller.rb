@@ -6,7 +6,7 @@ class Dashboard::EmailsController < Dashboard::ApplicationController
   respond_to :html
 
   protected
-    def begin_of_association_chain
-      current_user
+    def collection
+      @emails ||= end_of_association_chain.paginate(page: params[:page], per_page: WillPaginate.per_page)
     end
 end

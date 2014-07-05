@@ -16,3 +16,4 @@ table.table.table-hover
         = raw email.attach.present? ? "<a href=\"#{email.attach.url}\" title=\"Скачать\"><span class=\"glyphicon glyphicon-download\"></span></a>" : "Нет"
       td
         = link_to "Просмотр",  dashboard_mail_box_email_path(@mail_box, email)
+= will_paginate collection, renderer: BootstrapPagination::Rails

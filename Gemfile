@@ -56,3 +56,9 @@ gem 'rubyzip'
 
 #paperclip
 gem 'paperclip'
+
+#pagination
+gem 'will_paginate-bootstrap'
+
+#fake data
+gem 'faker'

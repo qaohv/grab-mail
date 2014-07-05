@@ -31,6 +31,10 @@ class Dashboard::MailBoxesController < Dashboard::ApplicationController
       current_user
     end
 
+    def collection
+      @mail_boxes ||= end_of_association_chain.paginate(page: params[:page], per_page: WillPaginate.per_page)
+    end
+
     def permitted_params
       params.permit(:mail_box => [:login, :pop3_server, :domain])
     end
