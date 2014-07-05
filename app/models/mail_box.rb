@@ -7,7 +7,7 @@ class MailBox < ActiveRecord::Base
   validates :pop3_server, format: {with: /pop3.*/, message: "pop3 server address should start with pop3"}
   belongs_to :user
 
-  has_many :emails
+  has_many :emails, dependent: :destroy
 
   def get_emails(password)
     pop = Net::POP3.new self.pop3_server
@@ -31,8 +31,8 @@ class MailBox < ActiveRecord::Base
               end
               current_email.update_attributes(attach: File.open("#{dir.first}attachment.zip"))
               FileUtils.rm(path_to_file)
-              FileUtils.rm("#{dir.first}attachment.zip")
             end
+            FileUtils.rm("#{dir.first}attachment.zip") if email.attachments.size > 0
           end
         end
       end
