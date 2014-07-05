@@ -12,4 +12,6 @@ Pop3EmailGrabber::Application.routes.draw do
       end
     end
   end
+
+  get '/*something' => 'errors#render_404'
 end
