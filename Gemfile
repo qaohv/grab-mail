@@ -62,3 +62,6 @@ gem 'will_paginate-bootstrap'
 
 #fake data
 gem 'faker'
+
+gem 'delayed_job_active_record'
+gem "daemons"

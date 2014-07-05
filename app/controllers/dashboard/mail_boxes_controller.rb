@@ -9,7 +9,7 @@ class Dashboard::MailBoxesController < Dashboard::ApplicationController
     mail_box = MailBox.where(id: params[:id]).first
     key, message = :notice, "Скачивание началось, это может занять некоторое время"
     begin
-      mail_box.get_emails(params[:password]) if mail_box
+      mail_box.delay.get_emails(params[:password]) if mail_box
     rescue => ex
       Rails.logger.info "Caught exception: #{ex.message}"
       key = :alert

@@ -4,7 +4,7 @@ require 'zip'
 
 class MailBox < ActiveRecord::Base
   validates :login, :pop3_server, :domain, presence: true
-  validates :pop3_server, format: {with: /pop3.*/, message: "pop3 server address should start with pop3"}
+  validates :pop3_server, format: {with: /pop.*/, message: "pop server address should start with pop"}
   belongs_to :user
 
   has_many :emails, dependent: :destroy
@@ -18,7 +18,7 @@ class MailBox < ActiveRecord::Base
         if Email.where(message_id: email.message_id).empty?
           [:from, :to, :subject, :message_id].each { |field|  args[field] = email.send(field).to_s }
           text = email.html_part ? email.html_part : email.text_part
-          args[:body] = text.decoded.force_encoding("utf-8")
+          args[:body] = text.decoded.force_encoding("utf-8") if text
           current_email =  self.emails.create!(args) rescue nil
           if current_email
             dir = FileUtils.mkdir("#{Rails.root}/public/attachments/email_#{current_email.id}_attachments/") if email.attachments.size > 0
