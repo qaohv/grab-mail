@@ -5,9 +5,9 @@
 template: &template
   adapter:  postgresql
   encoding: unicode
-  database: blog_database
-  username: blogger
-  password: bieNg9haV
+  database: email_grabber
+  username: email_grabber
+  password: pooPhee6
 
 
 development:
