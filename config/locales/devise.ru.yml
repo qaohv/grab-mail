@@ -1,5 +1,8 @@
 ru:
  devise:
+   sessions:
+     user:
+      signed_in: "Вы успешно вошли"
    registrations:
      user:
        signed_up: "Вы успешно зарегистрировались"
