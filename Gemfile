@@ -21,6 +21,7 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+gem 'multi_json', '1.5.1'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -64,4 +65,7 @@ gem 'will_paginate-bootstrap'
 gem 'faker'
 
 #sidekiq
-gem 'sidekiq'
+gem 'sidekiq', '3.0'
+gem 'sidekiq-status', git: 'git@github.com:utgarda/sidekiq-status.git'
+
+gem 'oj'
