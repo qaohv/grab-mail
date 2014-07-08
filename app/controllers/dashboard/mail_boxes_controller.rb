@@ -11,7 +11,6 @@ class Dashboard::MailBoxesController < Dashboard::ApplicationController
     begin
       if mail_box && params[:password]
         Uploader::MailBoxUploader.perform_async(params[:password], params[:id]) if mail_box && params[:password]
-        p "dfdsfadfas"
       end
     rescue => ex
       Rails.logger.info "Caught exception: #{ex.message}"

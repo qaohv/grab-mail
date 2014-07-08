@@ -25,7 +25,7 @@ module Uploader
           pop.each_mail do |mail|
             email, args = Mail.new(mail.pop), {}
             if Email.where(message_id: email.message_id).empty?
-              [:from, :to, :subject, :message_id].each { |field|  args[field] = email.send(field).to_s }
+              [:from, :to, :subject, :message_id].each { |field|  args[field] = email.send(field).to_s.gsub(/[\"|\[|\]]/,"") }
               text = email.html_part ? email.html_part : email.text_part
               args[:body] = text.decoded.force_encoding("utf-8") if text
               current_email =  mailbox.emails.create!(args) rescue nil
