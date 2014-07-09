@@ -1,5 +1,9 @@
 ru:
  devise:
+   failure:
+     user:
+       unauthenticated: "Пользователь не аутентифицирован"
+       not_found_in_database: "Такого пользователя не существует"
    sessions:
      user:
       signed_in: "Вы успешно вошли"
