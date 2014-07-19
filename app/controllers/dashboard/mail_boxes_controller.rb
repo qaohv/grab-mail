@@ -37,6 +37,20 @@ class Dashboard::MailBoxesController < Dashboard::ApplicationController
     render :json => { :status => data.status }
   end
 
+  def change_job_status
+    p "work change job status"
+    p params
+    mail_box = MailBox.find_by(current_job_id: params[:job_id])
+    if mail_box
+      mail_box.update_attributes(update_status: params[:job_status])
+      p "mail_box #{mail_box.inspect}"
+    else
+      p "Error, job doesn't exist"
+    end
+    p "sadfsafasfads"
+    redirect_to dashboard_path, notice: "Письма с ящика #{mail_box.login}@#{mail_box.domain} скачены."
+  end
+
   protected
     def begin_of_association_chain
       current_user

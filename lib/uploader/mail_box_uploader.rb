@@ -7,8 +7,7 @@ module Uploader
 
     def perform(*args)
       if args.size == 2
-        status_message = get_emails(args.first, args.last)
-        at 100, status_message if status_message.present?
+        get_emails(args.first, args.last)
       else
         "Incorrect arguments numbers."
       end
@@ -45,9 +44,6 @@ module Uploader
             end
           end
         end
-        "Upload complete :D"
-      else
-        "Mailbox not found :("
       end
     end
   end

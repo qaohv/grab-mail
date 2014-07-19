@@ -32,7 +32,8 @@ table.table.table-hover
           span.edit-button.glyphicon.glyphicon-edit
         = link_to content_tag("span class=\"delete-button glyphicon glyphicon-remove\""), dashboard_mail_box_path(box), title: "Удалить", method: :delete, confirm: "Вы уверены?"
 = will_paginate collection, renderer: BootstrapPagination::Rails
-- uploaded_boxes = collection.uploaded_boxes
+- uploaded_boxes = current_user.mail_boxes(false).uploaded_boxes
+= uploaded_boxes.inspect
 - if uploaded_boxes.size > 0
   - content_for :footer_javascripts
     = render 'ajax_requests.js.erb', object: @boxes = uploaded_boxes

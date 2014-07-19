@@ -6,7 +6,7 @@ setInterval(function() {
       data: "job_id=<%= mail_box.current_job_id %>",
       success: function(data) {
         if(data.status == "complete") {
-          alert("COMPLETE!");
+          changeJobStatus(data.status, "<%= mail_box.current_job_id %>", <%= mail_box.id %>);
         }
         if(data.status == "failed" ) {
           alert("FAILED!");
@@ -15,4 +15,12 @@ setInterval(function() {
     });
   <% end %>
 }, 3000);
+
+  function changeJobStatus(job_status, job_id, mail_box_id) {
+    $.ajax({
+      url: "/dashboard/mail_boxes/" + mail_box_id + "/change_job_status",
+      type: "GET",
+      data: "job_id=" + job_id + "&job_status="+ job_status
+    });
+  }
 </script>

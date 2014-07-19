@@ -7,6 +7,7 @@ Pop3EmailGrabber::Application.routes.draw do
     get '/' => "mail_boxes#index"
     resources :mail_boxes, except: [:show] do
       get 'check_upload_status' => "mail_boxes#check_upload_status"
+      get 'change_job_status' => "mail_boxes#change_job_status"
       resources :emails, only: [:index, :show]
       member do
         post 'upload'
