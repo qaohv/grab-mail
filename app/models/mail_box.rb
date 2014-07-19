@@ -8,4 +8,5 @@ class MailBox < ActiveRecord::Base
   belongs_to :user
 
   has_many :emails, dependent: :destroy
+  scope :uploaded_boxes, -> { where(update_status: "processing") }
 end

@@ -2,8 +2,7 @@
 
 module Uploader
   class MailBoxUploader
-    include Sidekiq::Worker
-    include Sidekiq::Status::Worker
+    include SidekiqStatus::Worker
     sidekiq_options :retry => false
 
     def perform(*args)

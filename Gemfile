@@ -65,7 +65,7 @@ gem 'will_paginate-bootstrap'
 gem 'faker'
 
 #sidekiq
-gem 'sidekiq', '3.0'
-gem 'sidekiq-status', git: 'git@github.com:utgarda/sidekiq-status.git'
+gem 'sidekiq'
+gem 'sidekiq_status', git: "git@github.com:cryo28/sidekiq_status.git"
 
 gem 'oj'

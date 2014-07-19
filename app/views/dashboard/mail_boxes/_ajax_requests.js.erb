@@ -1,0 +1,18 @@
+<script type="text/javascript">
+setInterval(function() {
+  <% @boxes.each do |mail_box| %>
+    $.ajax({
+      url: "/dashboard/mail_boxes/<%= mail_box.id %>/check_upload_status",
+      data: "job_id=<%= mail_box.current_job_id %>",
+      success: function(data) {
+        if(data.status == "complete") {
+          alert("COMPLETE!");
+        }
+        if(data.status == "failed" ) {
+          alert("FAILED!");
+        }
+      }
+    });
+  <% end %>
+}, 3000);
+</script>

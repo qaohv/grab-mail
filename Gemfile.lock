@@ -1,9 +1,9 @@
 GIT
-  remote: git@github.com:utgarda/sidekiq-status.git
-  revision: 84e2747a9b104dc6a358320435eec379d5a8906c
+  remote: git@github.com:cryo28/sidekiq_status.git
+  revision: 805e3841d6b4ec1660fdd55c6cb9868e3d67369e
   specs:
-    sidekiq-status (0.5.0)
-      sidekiq (>= 2.7, < 3.1)
+    sidekiq_status (1.0.8)
+      sidekiq (>= 2.4, < 3.0)
 
 GEM
   remote: https://rubygems.org/
@@ -146,9 +146,9 @@ GEM
       sass (~> 3.2.0)
       sprockets (~> 2.8, <= 2.11.0)
       sprockets-rails (~> 2.0)
-    sidekiq (3.0.0)
+    sidekiq (2.17.7)
       celluloid (>= 0.15.2)
-      connection_pool (>= 2.0.0)
+      connection_pool (>= 1.0.0)
       json
       redis (>= 3.0.6)
       redis-namespace (>= 1.3.1)
@@ -207,8 +207,8 @@ DEPENDENCIES
   rspec-rails
   rubyzip
   sass-rails (~> 4.0.0)
-  sidekiq (= 3.0)
-  sidekiq-status!
+  sidekiq
+  sidekiq_status!
   slim
   sqlite3
   turbolinks

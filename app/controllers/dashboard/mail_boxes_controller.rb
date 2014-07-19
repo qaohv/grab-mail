@@ -10,7 +10,9 @@ class Dashboard::MailBoxesController < Dashboard::ApplicationController
     key, message = :notice, "Скачивание началось, это может занять некоторое время"
     begin
       if @mail_box && params[:password]
-        @job_id = Uploader::MailBoxUploader.perform_async(params[:password], params[:id]) if @mail_box && params[:password]
+        @job_id = Uploader::MailBoxUploader.perform_async(params[:password], params[:id])
+        @mail_box.update_attributes(current_job_id: @job_id, update_status: "processing")
+        p "inspect mailbox #{@mail_box.inspect}"
       end
     rescue => ex
       Rails.logger.info "Caught exception: #{ex.message}"
@@ -25,14 +27,14 @@ class Dashboard::MailBoxesController < Dashboard::ApplicationController
             "Неизвестная ошибка."
         end
     end
-    @mail_boxes = current_user.mail_boxes.paginate(page: params[:page], per_page: WillPaginate.per_page)
+    redirect_to dashboard_path, key => message
   end
 
   def check_upload_status
-    data = Sidekiq::Status::get_all(params[:job_id])
+    data = SidekiqStatus::Container.load(params[:job_id])
     p "check upload_status"
-    p data
-    render :json => { :status => data[:status]}
+    p data.status
+    render :json => { :status => data.status }
   end
 
   protected
