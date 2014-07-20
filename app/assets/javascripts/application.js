@@ -5,3 +5,9 @@
 $(document).ready(function(){
   $('#popup-update').hide();
 });
+
+$(document).ready(function() {
+  setTimeout(function(){
+    $("#flash-wrapper").remove();
+  }, 3000);
+});

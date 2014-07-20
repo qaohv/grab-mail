@@ -12,10 +12,10 @@ html
      .header
        ul.nav.nav-pills.pull-right#dynamic_header
        h3.text-muted EmailGrabber
-     - if flash[:notice]
-       .flash-notice = flash[:notice]
-     - elsif flash[:alert]
-       .flash-error = flash[:alert]
+     - if flash[:notice] || flash[:alert]
+       #flash-wrapper
+         = raw "<div class=\"flash-notice\">#{flash[:notice]}</div>" if flash[:notice]
+         = raw "<div class=\"flash-error\">#{flash[:alert]}</div>" if flash[:alert]
      - if current_user
        p.button-wrapper
          a.btn.btn-primary.btn-lg href="#{new_dashboard_mail_box_path}" Добавить ящик
