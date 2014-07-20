@@ -7,7 +7,22 @@ module Uploader
 
     def perform(*args)
       if args.size == 2
-        get_emails(args.first, args.last)
+       # begin
+          get_emails(args.first, args.last)
+       # rescue => ex
+       #   p "Rescue exception!"
+       #   Rails.logger.info "Caught exception: #{ex.message}"
+       #   key = :alert
+       #   message =
+       #     case ex
+       #       when Net::POPAuthenticationError
+       #         "Неверный логин или пароль."
+       #       when SocketError
+       #         "Неверный адрес pop3-сервера."
+       #       else
+       #         "Неизвестная ошибка."
+       #       end
+       # end
       else
         "Incorrect arguments numbers."
       end

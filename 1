@@ -24,10 +24,5 @@ html
      .footer
        p one-man-team product 2014.
      script type='text/javascript' src='/dynamic_header.js'
-     - if current_user
-       - uploaded_boxes = current_user.mail_boxes.uploaded_boxes
-       = uploaded_boxes.inspect
-       - if uploaded_boxes.size > 0
-         - content_for :footer_javascripts
-           = render 'dashboard/mail_boxes/ajax_requests.js.erb', object: @boxes = uploaded_boxes
+     - if params[:controller] == 'dashboard/mail_boxes' && params[:action] == 'index'
      = yield :footer_javascripts

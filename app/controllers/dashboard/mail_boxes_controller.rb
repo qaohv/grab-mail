@@ -5,6 +5,7 @@ class Dashboard::MailBoxesController < Dashboard::ApplicationController
   actions :all, except: :show
   respond_to :html
 
+  #delete begin/rescue and move to lib/mail_box_uploader.rb
   def upload
     @mail_box = MailBox.where(id: params[:id]).first
     key, message = :notice, "Скачивание началось, это может занять некоторое время"
@@ -32,17 +33,17 @@ class Dashboard::MailBoxesController < Dashboard::ApplicationController
 
   def check_upload_status
     data = SidekiqStatus::Container.load(params[:job_id])
-    p "check upload_status"
-    p data.status
     render :json => { :status => data.status }
   end
 
   def change_job_status
     mail_box = MailBox.find_by(current_job_id: params[:job_id])
-    key, message = :alert, "Произошла ошибка при загрузке писем с ящика #{mail_box.login}@#{mail_box.domain}" if params[:job_status] != "complete"
+    key, message = :alert, "Произошла ошибка при загрузке писем с ящика #{mail_box.login}@#{mail_box.domain}"
     if mail_box
       mail_box.update_attributes(update_status: params[:job_status])
-      key, message = :notice, "Письма с ящика #{mail_box.login}@#{mail_box.domain} скачены."
+      if params[:job_status] == "complete"
+        key, message = :notice, "Письма с ящика #{mail_box.login}@#{mail_box.domain} скачены."
+      end
     else
       p "Error, job doesn't exist"
     end
