@@ -5,11 +5,9 @@ setInterval(function() {
       url: "/dashboard/mail_boxes/<%= mail_box.id %>/check_upload_status",
       data: "job_id=<%= mail_box.current_job_id %>",
       success: function(data) {
-        if(data.status == "complete") {
-          window.location.href = "/dashboard/mail_boxes/<%= mail_box.id %>/change_job_status?job_id=<%= mail_box.current_job_id %>&job_status=complete" ;
-        }
-        if(data.status == "failed" ) {
-          alert("FAILED!");
+        if(data.status == "complete" || data.status == "failed") {
+          var job_status = data.status
+          window.location.href = "/dashboard/mail_boxes/<%= mail_box.id %>/change_job_status?job_id=<%= mail_box.current_job_id %>&job_status="+job_status ;
         }
       }
     });

@@ -38,17 +38,15 @@ class Dashboard::MailBoxesController < Dashboard::ApplicationController
   end
 
   def change_job_status
-    p "work change job status"
-    p params
     mail_box = MailBox.find_by(current_job_id: params[:job_id])
+    key, message = :alert, "Произошла ошибка при загрузке писем с ящика #{mail_box.login}@#{mail_box.domain}" if params[:job_status] != "complete"
     if mail_box
       mail_box.update_attributes(update_status: params[:job_status])
-      p "mail_box #{mail_box.inspect}"
+      key, message = :notice, "Письма с ящика #{mail_box.login}@#{mail_box.domain} скачены."
     else
       p "Error, job doesn't exist"
     end
-    p "sadfsafasfads"
-    redirect_to dashboard_path, notice: "Письма с ящика #{mail_box.login}@#{mail_box.domain} скачены."
+    redirect_to dashboard_path, key => message
   end
 
   protected
