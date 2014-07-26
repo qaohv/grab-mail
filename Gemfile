@@ -69,3 +69,6 @@ gem 'sidekiq'
 gem 'sidekiq_status', git: "git@github.com:cryo28/sidekiq_status.git"
 
 gem 'oj'
+
+#state machine
+gem 'aasm'

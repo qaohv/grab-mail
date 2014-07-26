@@ -12,7 +12,7 @@ class Dashboard::MailBoxesController < Dashboard::ApplicationController
     begin
       if @mail_box && params[:password]
         @job_id = Uploader::MailBoxUploader.perform_async(params[:password], params[:id])
-        @mail_box.update_attributes(current_job_id: @job_id, update_status: "processing")
+        @mail_box.to_process!(nil, @job_id)
         p "inspect mailbox #{@mail_box.inspect}"
       end
     rescue => ex
@@ -40,7 +40,7 @@ class Dashboard::MailBoxesController < Dashboard::ApplicationController
     mail_box = MailBox.find_by(current_job_id: params[:job_id])
     key, message = :alert, "Произошла ошибка при загрузке писем с ящика #{mail_box.login}@#{mail_box.domain}"
     if mail_box
-      mail_box.update_attributes(update_status: params[:job_status])
+      mail_box.send("to_#{params[:job_status]}!") if MailBox.finish_update_status.include?(params[:job_status])
       if params[:job_status] == "complete"
         key, message = :notice, "Письма с ящика #{mail_box.login}@#{mail_box.domain} скачены."
       end
