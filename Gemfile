@@ -9,6 +9,11 @@ gem 'sqlite3'
 #postgres
 gem 'pg'
 
+#search
+gem 'thinking-sphinx', "~> 3.1.0"
+gem 'mysql2', '0.3.12b5'
+
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 gem "bootstrap-sass", "~> 3.1.1"
