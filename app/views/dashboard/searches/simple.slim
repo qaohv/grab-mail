@@ -1,0 +1,23 @@
+- provide :title, "Панель управления | Результаты поиска по запросу #{@query} "
+= breadcrumbs ["<a href=\"/dashboard\">Панель управления</a>","Результаты поиска по запросу #{@query}"]
+- if @emails && @emails.size > 0
+  table.table.table-hover
+    thead
+      th Отправитель
+      th Получатель
+      th Тема
+      th.center Вложение
+      th Просмотр
+    - @emails.each do |email|
+      tr
+        td = email.from
+        td = email.to
+        td = email.subject
+        td.center
+          = raw email.attach.present? ? "<a href=\"#{email.attach.url}\" title=\"Скачать\"><span class=\"glyphicon glyphicon-download\"></span></a>" : "Нет"
+        td
+          = link_to "Просмотр",  dashboard_mail_box_email_path(email.mail_box, email)
+  = will_paginate @emails, renderer: BootstrapPagination::Rails
+- else
+  p.search-not-found По запросу #{@query} ничего не найдено.
+

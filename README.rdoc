@@ -1,28 +1,6 @@
 == README
+  * ruby 2.0.0p451
+  * rails 4.0.0
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Functionality:
+  I write this app for understanding work with background tasks in RoR. This app provide downloading emails with attachments from your mailbox through pop3 protocol. Download emails run in background and after finish user get notification. 

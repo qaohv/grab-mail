@@ -37,6 +37,7 @@ abbr {
 
 .button-wrapper {
   margin-bottom: 30px;
+  display: inline-block;
 }
 
 .table thead {
@@ -134,4 +135,34 @@ abbr {
   border-radius: 5px 5px 5px 5px;
   margin-top: 10px;
   padding: 25px;
+}
+
+.search-wrapper {
+  float: right;
+  padding-top: 7px;
+}
+
+.search-query {
+  height: 33px;
+  border-radius: 16px 0 0 16px;
+  border: 1px solid #ccc;
+  width: 300px;
+  padding-left: 20px;
+}
+
+.search-btn {
+  line-height: 33px;
+  border-radius: 0px 16px 16px 0px;
+  border: 1px #ccc;
+  border-left: none;
+  display:inline-block;
+  background-color: #357EBD;
+  color: white;
+  width: 65px;
+  text-decoration: none !important;
+}
+
+.search-not-found {
+  font-size: 22px;
+  margin-bottom: 20px;
 }

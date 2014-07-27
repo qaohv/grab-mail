@@ -17,8 +17,13 @@ html
          = raw "<div class=\"flash-notice\">#{flash[:notice]}</div>" if flash[:notice]
          = raw "<div class=\"flash-error\">#{flash[:alert]}</div>" if flash[:alert]
      - if current_user
-       p.button-wrapper
+       .button-wrapper
          a.btn.btn-primary.btn-lg href="#{new_dashboard_mail_box_path}" Добавить ящик
+       .search-wrapper
+         form.form-search action="/dashboard/search"
+           .input-append
+             input.span2.search-query type="text" name="query"
+             button.search-btn href="/dashboard/search" Поиск
      = yield :breadcrumbs
      == yield
      .footer
@@ -26,7 +31,6 @@ html
      script type='text/javascript' src='/dynamic_header.js'
      - if current_user
        - uploaded_boxes = current_user.mail_boxes.uploaded_boxes
-       = uploaded_boxes.inspect
        - if uploaded_boxes.size > 0
          - content_for :footer_javascripts
            = render 'dashboard/mail_boxes/ajax_requests.js.erb', object: @boxes = uploaded_boxes
