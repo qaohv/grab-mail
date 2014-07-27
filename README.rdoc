@@ -1,6 +1,8 @@
 == README
-  * ruby 2.0.0p451
-  * rails 4.0.0
+
+* ruby 2.0.0p451
+* rails 4.0.0
 
 Functionality:
-  I write this app for understanding work with background tasks in RoR. This app provide downloading emails with attachments from your mailbox through pop3 protocol. Download emails run in background and after finish user get notification. 
+
+I write this app for understanding work with background tasks in RoR. This app provide downloading emails with attachments from your mailbox through pop3 protocol. Download emails run in background and after finish user get notification. 
